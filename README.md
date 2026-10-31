@@ -8,12 +8,13 @@ A review prompt for Claude Code, Cursor, and GitHub Copilot that asks for **fals
 | --- | --- | --- |
 | Any chat model | [`PROMPT.md`](PROMPT.md) | Paste, fill in the intent, paste the diff |
 | Claude Code | [`.claude/skills/review-diff/SKILL.md`](.claude/skills/review-diff/SKILL.md) | `/review-diff <intent of the change>` reviews `git diff HEAD` |
+| Claude Code | [`.claude/skills/review-branch/SKILL.md`](.claude/skills/review-branch/SKILL.md) | `/review-branch <intent of the branch>` reviews `git diff main...HEAD` |
 | Cursor | [`.cursor/rules/ai-review.mdc`](.cursor/rules/ai-review.mdc) | Manual rule: mention `@ai-review` with the diff or files |
 | GitHub Copilot code review | [`.github/instructions/code-review.instructions.md`](.github/instructions/code-review.instructions.md) | Applied to pull request reviews; excluded from the cloud agent |
 
 Copy the file for your tool into the same path in your repository.
 
-For a branch instead of uncommitted work, change `git diff HEAD` in the Claude Code skill to `git diff main...HEAD` and update `allowed-tools` to match.
+If your default branch is not `main`, change `main` in the `review-branch` skill to its name.
 
 ## Verify findings before acting on them
 
